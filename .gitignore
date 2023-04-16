@@ -1,0 +1,53 @@
+# Compiled object files
+*.o
+*.out
+
+# Dependency files
+*.d
+
+# IDE specific files and directories
+.vscode/
+*.vscode/
+*.code-workspace
+*.cproject
+*.project
+*.launch
+
+# Build output directories
+bin/
+build/
+dist/
+Debug/
+Release/
+
+# Object files for GCC
+*.dSYM/
+*.su
+
+# Editor backup files
+*~
+
+# Compiled binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.swp
+*.swo
+
+# Other build artifacts
+*.a
+*.lo
+*.la
+*.so.*
+*.cache
+
+# Dependency directories
+.deps/
+.libs/
