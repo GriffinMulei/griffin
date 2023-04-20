@@ -16,6 +16,8 @@
 void print_prompt(void);
 char *read_input(void);
 void execute_command(char *command_with_args);
+void execute(char **args);
+char **tokenize_command(char *command_with_args, int *num_args);
 void handle_error(void);
 
 #endif /*SHELL_H*/
