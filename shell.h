@@ -12,6 +12,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/*function prototypes*/
+void print_prompt(void);
+char *read_input(void);
+void execute_command(char *command_with_args);
+void handle_error(void);
 
 #endif /*SHELL_H*/
 
