@@ -5,56 +5,55 @@
  *
  * @command_with_args: string containing the command & args
  * @num_args: pointer to an int that stores the no. of args
+ * @delimeter: delim
  *
  * Return: arr of strings that contains the args
  *         NULL if there is an error
  */
 
-char **tokenize_command(char *command_with_args, int *num_args)
+char **tokenize_command(char *command_with_args,char *delimeter, int *num_args)
 {
 	char *token;
 	char **args;
-	int i;
 
-	token = strtok(command_with_args, " ");
-	while (token != NULL)
-	{
-		(*num_args)++;
-		token = strtok(NULL, " ");
-	}
-
-	args = malloc(((*num_args) + 1) * sizeof(char *));
-
+	args = malloc((MAX_COMMAND_ARGS + 1) * sizeof(char *));
 	if (args == NULL)
 	{
 		handle_error();
 		return (NULL);
 	}
-	token = strtok(command_with_args, " ");
 
-	for (i = 0; i < (*num_args); i++)
+	token = strtok(command_with_args, delimeter);
+	
+	while (token != NULL)
 	{
-		args[i] = token;
-		token = strtok(NULL, " ");
+		if (*num_args >= MAX_COMMAND_ARGS)
+		{
+			fprintf(stderr, "Error: too many arguements\n");
+			free(args);
+			return (NULL);
+		}
+		args[*num_args] = _strdup(token);
+		(*num_args)++;
+		token = strtok(NULL, delimeter);
 	}
-
-	args[(*num_args)] = NULL;
+	args[*num_args] = NULL;
 
 	return (args);
 }
 
-/**
- * execute - executes a command
- *
- * @args: an arr of args
- */
+	/**
+	 * execute - executes a command
+	 *
+	 * @args: an arr of args
+	 */
 
-void execute(char **args)
-{
-	if (execvp(args[0], args) == -1)
-
+	void execute(char **args)
 	{
-		handle_error();
-		exit(EXIT_FAILURE);
-	}
+		if (execvp(args[0], args) == -1)
+
+		{
+			handle_error();
+			exit(EXIT_FAILURE);
+		}
 }
