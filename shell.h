@@ -12,13 +12,30 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+
+/*maximum file path length*/
+#define FILE_PATH_MAX_LEN 1024
+
+/*mamximum no. of args to be passed to a cmd*/
+#define MAX_COMMAND_ARGS 128
+
 /*function prototypes*/
 void print_prompt(void);
 char *read_input(void);
 void execute_command(char *command_with_args);
 void execute(char **args);
-char **tokenize_command(char *command_with_args, int *num_args);
+char **tokenize_command(char *command_with_args, char *delimeter, int *num_args);
 void handle_error(void);
 
-#endif /*SHELL_H*/
+/*env prototypes*/
+char *_find_command_path(char *cmd);
+char *_getenv(const char *env_var);
+char *_which(char *cmd);
+char *_strdup(char *str);
+char **_split(char *str, char *delim);
 
+
+/*arr of strings for env variables*/
+extern char **environ;
+
+#endif /*SHELL_H*/
