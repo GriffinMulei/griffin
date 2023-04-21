@@ -10,8 +10,11 @@
  * Return: arr of strings that contains the args
  *         NULL if there is an error
  */
-
-char **tokenize_command(char *command_with_args,char *delimeter, int *num_args)
+char **tokenize_command(
+	char *command_with_args,
+	char *delimeter,
+	int *num_args
+)
 {
 	char *token;
 	char **args;
@@ -24,7 +27,7 @@ char **tokenize_command(char *command_with_args,char *delimeter, int *num_args)
 	}
 
 	token = strtok(command_with_args, delimeter);
-	
+
 	while (token != NULL)
 	{
 		if (*num_args >= MAX_COMMAND_ARGS)
@@ -42,18 +45,16 @@ char **tokenize_command(char *command_with_args,char *delimeter, int *num_args)
 	return (args);
 }
 
-	/**
-	 * execute - executes a command
-	 *
-	 * @args: an arr of args
-	 */
-
-	void execute(char **args)
+/**
+ * execute - executes a command
+ *
+ * @args: an arr of args
+ */
+void execute(char **args)
+{
+	if (execvp(args[0], args) == -1)
 	{
-		if (execvp(args[0], args) == -1)
-
-		{
-			handle_error();
-			exit(EXIT_FAILURE);
-		}
+		handle_error();
+		exit(EXIT_FAILURE);
+	}
 }

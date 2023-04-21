@@ -13,7 +13,7 @@ void execute_command(char *command_with_args)
 	int num_args = 0;
 	pid_t pid;
 
-	args = tokenize_command(command_with_args," ",&num_args);
+	args = tokenize_command(command_with_args, " ", &num_args);
 	if (args == NULL)
 		return;
 
