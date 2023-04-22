@@ -32,6 +32,11 @@ int main(int argc, char **argv)
 			putchar('\n');
 			break;
 		}
+		if (_strcmp(user_input, "exit") == 0)
+		{
+			exit_shell();
+			exit(EXIT_SUCCESS);
+		}
 		execute_command(user_input);
 		free(user_input);
 	}
