@@ -12,6 +12,23 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+/** struct info_s - contains info needed for shell operations
+ * @buffer: pointer to input buffer
+ * @argv: pointer to arr of args passed to the shell
+ * @envp:
+ * @status:
+ * @err_num:
+*/
+
+typedef struct info_s
+{
+	char *buffer;
+	char **argv;
+	char **envp;
+	int status;
+	int err_num;
+} info_t;
+
 /*maximum file path length*/
 #define FILE_PATH_MAX_LEN 1024
 
@@ -19,8 +36,7 @@
 #define MAX_COMMAND_ARGS 128
 
 /*function prototypes*/
-void
-print_prompt(void);
+void print_prompt(void);
 char *read_input(void);
 void execute_command(char *command_with_args);
 void execute(char **args);
@@ -43,6 +59,9 @@ int _strcmp(char *s1, char *s2);
 
 /*prototype to exit shell*/
 void exit_shell(void);
+
+/**prototype to printf current env*/
+int print_env(void);
 
 /*arr of strings for env variables*/
 extern char **environ;
