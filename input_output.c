@@ -8,7 +8,10 @@
 
 void print_prompt(void)
 {
-	printf("%s", USER_PROMPT);
+	if (isatty(STDIN_FILENO))
+	{
+		write(STDOUT_FILENO, "($) ", 4);
+	}
 }
 
 /**
