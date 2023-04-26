@@ -36,6 +36,8 @@ typedef struct info_s
 #define MAX_COMMAND_ARGS 128
 
 /*function prototypes*/
+void shell_loop(void);
+void print_args(int argc, char **argv);
 void print_prompt(void);
 char *read_input(void);
 void execute_command(char *command_with_args);
