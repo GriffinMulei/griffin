@@ -27,13 +27,14 @@ if (pid == -1)
 
 if (pid == 0)
 {
-	if (execvp(args[0], args)== -1)
+	if (execvp(args[0], args) == -1)
 	{
 		perror("Exec failed");
 		exit(EXIT_FAILURE);
 	}
 }
-else{
+else
+{
 	wait(NULL);
 }
 
