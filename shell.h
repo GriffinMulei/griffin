@@ -71,7 +71,7 @@ int _strcmp(char *s1, char *s2);
 void exit_shell(void);
 
 /**prototype to printf current env*/
-int print_env(void);
+int print_env(const char *keep_var);
 
 /*arr of strings for env variables*/
 extern char **environ;

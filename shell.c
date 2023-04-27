@@ -55,6 +55,10 @@ void shell_loop(char *program_name)
 			exit_shell();
 			exit(EXIT_SUCCESS);
 		}
+		else if (_strcmp(user_input, "printenv") == 0)
+		{
+			print_env("PATH");
+		}
 		execute_command(user_input, program_name, line_number);
 	}
 	free(user_input);
