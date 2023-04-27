@@ -12,12 +12,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-/** struct info_s - contains info needed for shell operations
+/**
+ * struct info_s - contains info needed for shell operations
  * @buffer: pointer to input buffer
  * @argv: pointer to arr of args passed to the shell
- * @envp:
- * @status:
- * @err_num:
+ * @envp: pointer to env vars
+ * @status: exit status
+ * @err_num: error no.
 */
 
 typedef struct info_s
@@ -40,9 +41,13 @@ void shell_loop(char *program_name);
 void print_args(int argc, char **argv);
 void print_prompt(void);
 char *read_input(void);
-void execute_command(char *command_with_args, char *program_name, int line_number);
+void execute_command(char *command_with_args,
+			char *program_name,
+			int line_number);
 void execute(char **args);
-char **tokenize_command(char *command_with_args, char *delimeter, int *num_args);
+char **tokenize_command(char *command_with_args,
+			char *delimeter,
+			int *num_args);
 void handle_error(void);
 
 /*memory*/
