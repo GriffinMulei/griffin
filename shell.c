@@ -20,11 +20,12 @@ void print_args(int argc, char **argv)
  * shell_loop - main loop of the shell
  *
 */
-void shell_loop(void)
+void shell_loop(char *program_name)
 {
 	char *user_input = NULL;
 	size_t input_size = 0;
 	ssize_t num_chars_read;
+	int line_number = 1;
 	int interactive = isatty(STDIN_FILENO);
 
 	while (1)
@@ -53,7 +54,7 @@ void shell_loop(void)
 			exit_shell();
 			exit(EXIT_SUCCESS);
 		}
-		execute_command(user_input);
+		execute_command(user_input, program_name, line_number);
 	}
 	free(user_input);
 }
@@ -72,7 +73,7 @@ int main(int argc, char **argv)
 	{
 		print_args(argc, argv);
 	}
-	shell_loop();
+	shell_loop(argv[0]);
 
 	return (EXIT_SUCCESS);
 }
