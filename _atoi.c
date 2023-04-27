@@ -8,7 +8,6 @@
 int _atoi(char *s)
 
 {
-
 	int i = 0;
 	unsigned int result = 0;
 	int sign = 1;
@@ -23,16 +22,13 @@ int _atoi(char *s)
 		while (s[i] >= '0' && s[i] <= '9')
 		{
 			hasDigits = 1;
-			result *=  10; 
+			result *=  10;
 			result	+= (s[i] - '0');
-			
 		}
 		if (hasDigits == 1)
 			hasDigits = 2;
-
-		
 	}
-	 if (sign == -1)
+	if (sign == -1)
 		output = -result;
 	else
 		output = result;

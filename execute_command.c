@@ -5,9 +5,12 @@
  *
  * @command_with_args: string containing command to execute
  * @program_name: Program name running the shell
+ * @line_number: No. of line where the command was read
  *
  */
-void execute_command(char *command_with_args, char *program_name, int line_number)
+void execute_command(char *command_with_args,
+		char *program_name,
+		int line_number)
 {
 	char **args;
 	int num_args = 0;
@@ -30,7 +33,8 @@ void execute_command(char *command_with_args, char *program_name, int line_numbe
 	{
 		if (execvp(args[0], args) == -1)
 		{
-			fprintf(stderr, "%s: %d: %s: not found\n", program_name, line_number, args[0]);
+			fprintf(stderr, "%s: %d: %s: not found\n",
+				program_name, line_number, args[0]);
 			exit(EXIT_FAILURE);
 		}
 	}

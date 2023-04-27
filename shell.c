@@ -18,6 +18,7 @@ void print_args(int argc, char **argv)
 
 /**
  * shell_loop - main loop of the shell
+ * @program_name: name of program
  *
 */
 void shell_loop(char *program_name)
