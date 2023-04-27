@@ -36,14 +36,17 @@ typedef struct info_s
 #define MAX_COMMAND_ARGS 128
 
 /*function prototypes*/
-void shell_loop(void);
+void shell_loop(char *program_name);
 void print_args(int argc, char **argv);
 void print_prompt(void);
 char *read_input(void);
-void execute_command(char *command_with_args);
+void execute_command(char *command_with_args, char *program_name, int line_number);
 void execute(char **args);
 char **tokenize_command(char *command_with_args, char *delimeter, int *num_args);
 void handle_error(void);
+
+/*memory*/
+void free_args(char **args);
 
 /*env prototypes*/
 char *_find_command_path(char *cmd);
