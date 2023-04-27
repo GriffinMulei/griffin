@@ -58,3 +58,22 @@ void execute(char **args)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * free_args - free allocated mem for args
+ *
+ * @args: Arr of args
+*/
+void free_args(char **args)
+{
+	int i;
+
+	if (args == NULL)
+		return;
+
+	for (i = 0; args[i] != NULL; i++)
+	{
+		free(args[i]);
+	}
+	free(args);
+}
