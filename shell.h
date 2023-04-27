@@ -41,7 +41,7 @@ void shell_loop(char *program_name);
 void print_args(int argc, char **argv);
 void print_prompt(void);
 char *read_input(void);
-void execute_command(char *command_with_args,
+int execute_command(char *command_with_args,
 			char *program_name,
 			int line_number);
 void execute(char **args);
