@@ -15,6 +15,9 @@ int execute_command(char *command_with_args,
 	int num_args = 0;
 	int exit_code;
 
+	if (command_with_args[0] == '#')
+		return (0);
+
 	command_with_args[strcspn(command_with_args, "\n")] = '\0';
 
 	args = tokenize_command(command_with_args, " ", &num_args);
