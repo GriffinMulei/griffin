@@ -53,6 +53,8 @@ int _execute(char **args, char *program_name, int line_number);
 /*memory*/
 void free_args(char **args);
 
+extern int child_exit_status;
+
 /*env prototypes*/
 char *_find_command_path(char *cmd);
 char *_getenv(const char *env_var);

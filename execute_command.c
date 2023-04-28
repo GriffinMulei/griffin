@@ -1,4 +1,6 @@
 #include "shell.h"
+int child_exit_status = 0;
+
 /**
  * execute_command - function to execute a command
  *
@@ -75,8 +77,10 @@ int _execute(char **args, char *program_name, int line_number)
 			perror("wait");
 			exit(EXIT_FAILURE);
 		}
-		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-			return (1);
+		if (WIFEXITED(status))
+		{
+			child_exit_status = WEXITSTATUS(status);
+		}
 	}
 
 	return (0);
